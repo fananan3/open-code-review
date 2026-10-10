@@ -19,12 +19,7 @@ public class ApiTest {
 
     @Test
     public static void main(String[] args) {
-        System.out.println(Integer.parseInt("aaaa"));
-        System.out.println(Integer.parseInt("aaaa2"));
-        System.out.println(Integer.parseInt("aaaa3"));
-        System.out.println(Integer.parseInt("aaaa4"));
-        System.out.println(Integer.parseInt("aaaa5"));
-        System.out.println(Integer.parseInt("aaaa6"));
-        System.out.println(Integer.parseInt("aaaa7"));
+        System.out.println(Integer.parseInt("123"));
+
     }
 }

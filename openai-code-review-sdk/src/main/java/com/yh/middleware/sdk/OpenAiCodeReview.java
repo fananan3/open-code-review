@@ -51,7 +51,7 @@ public class OpenAiCodeReview {
         connection.setDoOutput(true);
 
         ChatCompletionRequest chatCompletionRequest = new ChatCompletionRequest();
-        chatCompletionRequest.setModel(Model.GLM_5_3.getCode());
+        chatCompletionRequest.setModel(Model.GLM_4_flashx.getCode());
         chatCompletionRequest.setMessages(new ArrayList<ChatCompletionRequest.Prompt>(){
             private static final long serialVersionUID = -7988151926241837899L;
             {

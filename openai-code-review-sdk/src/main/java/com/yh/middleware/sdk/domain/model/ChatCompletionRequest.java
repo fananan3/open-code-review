@@ -8,7 +8,7 @@ import java.util.List;
  * @Date 2026/10/10 21:45
  */
 public class ChatCompletionRequest {
-    private String model = Model.GLM_5_3.getCode();
+    private String model = Model.GLM_4_flashx.getCode();
     private List<Prompt> messages;
 
     public static class Prompt {

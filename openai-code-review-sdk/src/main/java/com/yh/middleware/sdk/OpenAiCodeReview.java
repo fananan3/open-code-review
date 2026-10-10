@@ -48,7 +48,8 @@ public class OpenAiCodeReview {
         System.out.println("code review：" + response);
 
         //3 写入评审日志
-        writeLog(token, response);
+        String logUrl = writeLog(token, response);
+        System.out.println("writeLog：" + logUrl);
     }
 
 

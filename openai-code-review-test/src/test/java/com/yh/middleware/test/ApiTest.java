@@ -25,5 +25,6 @@ public class ApiTest {
         System.out.println(Integer.parseInt("aaaa4"));
         System.out.println(Integer.parseInt("aaaa5"));
         System.out.println(Integer.parseInt("aaaa6"));
+        System.out.println(Integer.parseInt("aaaa7"));
     }
 }

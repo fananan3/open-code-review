@@ -1,4 +1,6 @@
-package com.yh.middleware.sdk.domain.model;
+package com.yh.middleware.sdk.infrastructure.openai.dto;
+
+import com.yh.middleware.sdk.domain.model.Model;
 
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  * @Author fanyiheng
  * @Date 2026/10/10 21:45
  */
-public class ChatCompletionRequest {
+public class ChatCompletionRequestDTO {
     private String model = Model.GLM_4_flashx.getCode();
     private List<Prompt> messages;
 

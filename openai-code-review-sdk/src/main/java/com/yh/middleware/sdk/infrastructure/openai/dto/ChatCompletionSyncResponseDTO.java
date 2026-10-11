@@ -1,4 +1,4 @@
-package com.yh.middleware.sdk.domain.model;
+package com.yh.middleware.sdk.infrastructure.openai.dto;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import java.util.List;
  * @Author fanyiheng
  * @Date 2026/10/10 21:58
  */
-public class ChatCompletionSyncResponse {
+public class ChatCompletionSyncResponseDTO {
     private List<Choice> choices;
 
     public static class Choice {

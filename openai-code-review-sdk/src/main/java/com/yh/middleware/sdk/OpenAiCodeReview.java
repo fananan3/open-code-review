@@ -53,6 +53,7 @@ public class OpenAiCodeReview {
         //3 写入评审日志
         String logUrl = writeLog(token, response);
         System.out.println("writeLog：" + logUrl);
+        pushMessage(logUrl);
     }
 
 

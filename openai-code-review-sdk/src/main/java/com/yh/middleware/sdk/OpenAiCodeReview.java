@@ -3,7 +3,9 @@ package com.yh.middleware.sdk;
 import com.alibaba.fastjson2.JSON;
 import com.yh.middleware.sdk.domain.model.ChatCompletionRequest;
 import com.yh.middleware.sdk.domain.model.ChatCompletionSyncResponse;
+import com.yh.middleware.sdk.domain.model.Message;
 import com.yh.middleware.sdk.domain.model.Model;
+import com.yh.middleware.sdk.types.util.WXAccessTokenUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
@@ -15,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * @Description
@@ -132,5 +135,42 @@ public class OpenAiCodeReview {
             sb.append(characters.charAt(random.nextInt(characters.length())));
         }
         return sb.toString();
+    }
+
+    private static void pushMessage(String logUrl){
+        String accessToken = WXAccessTokenUtils.getAccessToken();
+        System.out.println("accessToken：" + accessToken);
+
+        Message message = new Message();
+        message.put("project","big-market");
+        message.put("review",logUrl);
+        message.setUrl(logUrl);
+
+        String url = String.format("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s", accessToken);
+        sendPostRequest(url, JSON.toJSONString(message));
+    }
+
+    private static void sendPostRequest(String urlString, String jsonBody) {
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json; utf-8");
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setDoOutput(true);
+
+            try(OutputStream os = conn.getOutputStream()){
+                byte[] input = jsonBody.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+
+            try(Scanner scn = new Scanner(conn.getInputStream(), StandardCharsets.UTF_8.name())){
+                // 读取响应
+                String response = scn.useDelimiter("\\A").next();
+                System.out.println(response);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
